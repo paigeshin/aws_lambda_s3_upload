@@ -1,0 +1,20 @@
+service: serverless-js
+
+# Stages & Region
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev # you can name it as you wish, convention `dev` or `prod`
+  region: ap-northeast-1
+
+# Lambda Functions
+custom:
+  fileUploadBucketName: ${self:service}-bucket-${self:provider.stage}
+
+resources:
+  Resources:
+    FileBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.fileUploadBucketName}
+        AccessControl: PublicRead
