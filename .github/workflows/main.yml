@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest # which os option
     strategy:
       matrix:
-        node-version: [14.x, 16.x] # node version
+        node-version: [12.x] # node version
     steps:
       - uses: actions/checkout@v2 # checkout project structures
       - name: Use Node.js ${{ matrix.node-version }}
